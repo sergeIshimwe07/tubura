@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Button, MegaMenu, Navbar } from "flowbite-react";
 import Login from './Login'
 import Register from "./Register";
+import UserPage from "./UserPage";
+import AdminPanel from "./AdminPanel";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           {/* <Route exact path="/" element={<App />} /> */}
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/ubwitabire" element={<UserPage />} />
+          <Route exact path="/admin" element={<AdminPanel />} />
         </Routes>
       </BrowserRouter>
     </div>
