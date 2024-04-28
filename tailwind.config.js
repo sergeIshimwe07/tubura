@@ -6,7 +6,11 @@ module.exports = {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'acre-yellow-bg': '#DE9811',
+      }
+    },
   },
   plugins: [
     flowbite.plugin(),
