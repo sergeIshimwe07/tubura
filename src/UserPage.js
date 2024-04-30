@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import {
   Button,
   Checkbox,
@@ -14,28 +14,24 @@ import {
 } from "flowbite-react";
 function UserPage() {
   const endPoint = process.env.REACT_APP_API_URL;
-  const { attendanceId, district1 } = useParams()
+  const [searchParams] = useSearchParams();
   const [name, setName] = useState("");
   const [sfid, setSfid] = useState("");
-  const [district, setDistrict] = useState("");
+  const [akarere, setDistrict] = useState("");
   const [zone, setZone] = useState("");
   const token = localStorage.getItem('token')
-  console.log(token, "TOKEN fgee HERE")
-  const attendanceId2 = 1;
-  const districtss = 2;
-  console.log(attendanceId, "ATTENDANCEID");
-  console.log(district1, "DISTRIST");
 
-  //=== fx ===
+  const districtId = searchParams.get('di');
+  const attendanceId = searchParams.get('at');
 
   const onSubmiDatat = (e) => {
     e.preventDefault();
     const payLoad = {
-      attendance_id: 2,
+      attendance_id: attendanceId,
       names: name,
       sfid,
       sector: zone,
-      district: 1
+      district: districtId
     };
     fetch(endPoint + "/saveAttendance", {
       method: 'POST',
