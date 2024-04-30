@@ -55,6 +55,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/ubwitabire" element={<UserPage />} />
           <Route exact path="/admin" element={<Protected><AdminPanel /></Protected>} />
+          <Route exact path="/" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
