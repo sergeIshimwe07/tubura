@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Table, Modal, Card } from "flowbite-react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 function AdminPanel() {
   const endPoint = process.env.REACT_APP_API_URL;
   const [userData, setUserData] = useState([])
   const [datePicker, setDatePicker] = useState("")
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalSend, setOpenModalSent] = useState(false);
 
   const token = localStorage.getItem('token')
   const callCreateAttandance = (e) => {
@@ -16,9 +19,9 @@ function AdminPanel() {
         'Content-Type': 'application/json'
       }
     }).then((res) => {
-      let status = res.status
       res.json()
-      alert("Yoherejwe");
+      setOpenModal(!openModal)
+      setOpenModalSent(!openModalSend)
     }).then(
       // data => alert(data)
     ).catch(erro => console.error(erro))
@@ -49,6 +52,39 @@ function AdminPanel() {
   }
   return (
     <>
+      {/* Confirm Sent Mails Modal */}
+      <Modal show={openModalSend} size="md" onClose={() => setOpenModalSent(false)} popup>
+        <Modal.Header />
+        <Modal.Body>
+          <div className="text-center">
+            <h3 className="mb-5 text-lg font-normal text-green-900 dark:text-gray-400">
+              Yoherejwe!
+            </h3>
+          </div>
+        </Modal.Body>
+      </Modal>
+      {/* Confirm Send Mails Modal */}
+      <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
+        <Modal.Header />
+        <Modal.Body>
+          <div className="text-center">
+            <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+              Urashaka kohereza Lisitiri?
+            </h3>
+            <div className="flex justify-center gap-4">
+              <Button color="success"
+                onClick={callCreateAttandance}
+              >
+                {"Emeza"}
+              </Button>
+              <Button color="gray" onClick={() => setOpenModal(false)}>
+                Hoya
+              </Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
       <section className='m-auto'>
         <section className='flex justify-center pt-4'>
           <Card href="#" className="max-w-lg">
@@ -72,7 +108,9 @@ function AdminPanel() {
               </div>
               {/* Additional Button */}
               <div className='col-span-3'>
-                <Button onClick={callCreateAttandance} color="success">New</Button>
+                <Button
+                  onClick={() => setOpenModal(true)}
+                  color="success">New</Button>
               </div>
             </div>
           </Card>
