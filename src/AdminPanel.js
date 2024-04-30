@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Table, Modal, Card } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { saveAs } from 'file-saver';
 
 function AdminPanel() {
   const endPoint = process.env.REACT_APP_API_URL;
@@ -40,16 +41,23 @@ function AdminPanel() {
 
   const handleExport = (e) => {
     e.preventDefault();
-    console.log(datePicker, "DATEPCIKER");
+    
     fetch(endPoint + '/getAttendance/1', {
       method: "POST",
     })
-      .then(res => res.json())
-      .then((data) => {
-        console.log(data)
-      })
-      .catch(error => console.error(error))
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.blob(); // Parse response as Blob
+    })
+    .then(blob => {
+      const fileName = 'attendance.csv'; // You can customize the filename here
+      saveAs(blob, fileName); // Save Blob as file
+    })
+    .catch(error => console.error(error));
   }
+      
   return (
     <>
       {/* Confirm Sent Mails Modal */}
