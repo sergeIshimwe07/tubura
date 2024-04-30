@@ -87,9 +87,6 @@ function AdminPanel() {
                   <Table.HeadCell>SFID</Table.HeadCell>
                   <Table.HeadCell>Zone</Table.HeadCell>
                   <Table.HeadCell>Date</Table.HeadCell>
-                  <Table.HeadCell>
-                    <span className="sr-only">Edit</span>
-                  </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                   {userData.length > 0 ? (
@@ -107,7 +104,6 @@ function AdminPanel() {
                   ) : (
                     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                        {'Apple MacBook Pro 17"'}
                       </Table.Cell>
                       <Table.Cell>-</Table.Cell>
                       <Table.Cell>-</Table.Cell>

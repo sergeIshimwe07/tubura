@@ -11,7 +11,7 @@ import {
   TextInput,
   ToggleSwitch,
 } from "flowbite-react";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 function Login() {
   const endPoint = process.env.REACT_APP_API_URL;
@@ -37,10 +37,10 @@ function Login() {
       }
     }).then(
       (data) => {
-        console.log(data, "the data is here")
         localStorage.setItem("uid", data.uid)
         localStorage.setItem("email", data.email)
         localStorage.setItem("token", data.token)
+        localStorage.setItem("isLoggedIn", "true")
         navigate('/admin');
       }
     ).catch(err => console.error(err))
