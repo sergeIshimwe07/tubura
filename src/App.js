@@ -22,9 +22,9 @@ function App() {
               >
                 Login
               </Link>
-              <Link to="/register">
+              {/* <Link to="/register">
                 <Button>Sign up</Button>
-              </Link>
+              </Link> */}
 
             </div>
             <Navbar.Toggle />
@@ -41,6 +41,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/ubwitabire" element={<UserPage />} />
           <Route exact path="/admin" element={<AdminPanel />} />
+          <Route path="http://localhost:8080/generateQrCode/:district/:attendanceId" element={<UserPage />} />
         </Routes>
       </BrowserRouter>
     </div>
