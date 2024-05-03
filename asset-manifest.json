@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tubura/static/css/main.25db8761.css",
+    "main.js": "/tubura/static/js/main.9f2d536b.js",
+    "index.html": "/tubura/index.html",
+    "main.25db8761.css.map": "/tubura/static/css/main.25db8761.css.map",
+    "main.9f2d536b.js.map": "/tubura/static/js/main.9f2d536b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.25db8761.css",
+    "static/js/main.9f2d536b.js"
+  ]
+}
